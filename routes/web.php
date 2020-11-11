@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 // call Controller
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Backend;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,5 @@ Route::get('/logout', function(){
   Session::forget('user');
   return redirect('/login');
 });
+
+Route::get('/app',[Backend\DefaultController::class, 'dashboard']);
