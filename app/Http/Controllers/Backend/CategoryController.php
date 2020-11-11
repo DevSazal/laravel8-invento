@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Validator; // validator class for rules
 
 use App\Models\Category;
 
@@ -27,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('app.category.create');
     }
 
     /**
@@ -38,7 +39,28 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      // code...  Data Validation
+      $validator = Validator::make($request->all(), [
+          'name' => 'required|string|min:4|max:25|unique:categories,name'
+      ]);
+
+      if ($validator->fails()) {
+          // return back()->withErrors($validator)
+          //               ->withInput();
+          return dd($validator->errors());
+      }else {
+
+        $cat = new Category;
+        $cat->name = $request->name;
+        $result = $cat->save();
+
+          if($result){
+            // return ["result" => "Data has been saved."];
+            return redirect('/app/category');
+          }else{
+            return ["result" => "Operation Failed!"];
+          }
+      }
     }
 
     /**
@@ -60,7 +82,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+      $array['category'] = Category::find($id);
+      return view('app.category.edit')->with($array);
     }
 
     /**
@@ -72,7 +95,27 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      // code...  Data Validation
+      $validator = Validator::make($request->all(), [
+          'name' => 'required|string|min:4|max:25|unique:categories,name'
+      ]);
+      if ($validator->fails()) {
+          // return back()->withErrors($validator)
+          //               ->withInput();
+          return dd($validator->errors());
+      }else {
+
+        $cat = Category::find($id);
+        $cat->name = $request->name;
+        $result = $cat->save();
+
+          if($result){
+            // return ["result" => "Data has been saved."];
+            return redirect('/app/category');
+          }else{
+            return ["result" => "Operation Failed!"];
+          }
+      }
     }
 
     /**

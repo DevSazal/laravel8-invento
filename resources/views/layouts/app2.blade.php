@@ -42,7 +42,7 @@
 
 
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-3">
               <div class="list-group">
                   <a href="{{ url('app/category') }}" class="list-group-item list-group-item-action"><i class="fas fa-arrow-alt-circle-right"></i>
                     Category
@@ -55,7 +55,7 @@
                 <a href="{{ url('/logout') }}"> @ Logout</a>
               </div>
           </div>
-          <div class="col-sm-8">
+          <div class="col-sm-9">
             @yield('content2')
           </div>
 

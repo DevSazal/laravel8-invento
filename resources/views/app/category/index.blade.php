@@ -9,7 +9,7 @@
 
 
 <div class="">
-    <h3>Category</h3>
+    <h3>Category</h3> <a href="{{ url('app/category/create') }}" class="btn btn-secondary"><i class="fas fa-plus-circle"></i> Create </a>
     <p>Lorem ipsum dolor..</p>
 
 
@@ -27,8 +27,8 @@
       <td>#{{ $category->id }}</td>
       <td>{{ $category->name }}</td>
       <td>
-        <button onclick="$(this).parent().find('#edit').submit()" class="btn btn-outline-info">Info</button>
-        <button onclick="$(this).parent().find('#delete').submit()" class="btn btn-outline-danger">Danger</button>
+        <button onclick="$(this).parent().find('#edit').submit()" class="btn btn-outline-info">Edit</button>
+        <button onclick="$(this).parent().find('#delete').submit()" class="btn btn-outline-danger">Delete</button>
 
               <form id="edit" method="POST" action="{{ route('app.category.edit', $category->id) }}">
                     @method('GET')
