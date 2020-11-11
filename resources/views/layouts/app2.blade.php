@@ -18,6 +18,13 @@
         <style>
             body {
                 font-family: 'Nunito';
+                background-color: #48d8a9;
+            }
+            .w-5{
+              display: none!important;
+            }
+            p.text-sm.text-gray-700.leading-5 {
+                margin-top: 1rem;
             }
         </style>
     </head>
@@ -25,7 +32,36 @@
 
 
       <div class="container">
-            @yield('content')
+
+
+        <div class="jumbotron text-center">
+          <h1>Welcome</h1>
+          <p></p>
+        </div>
+
+
+
+        <div class="row">
+          <div class="col-md-4">
+              <div class="list-group">
+                  <a href="{{ url('app/category') }}" class="list-group-item list-group-item-action"><i class="fas fa-arrow-alt-circle-right"></i>
+                    Category
+                  </a>
+                  <a href="{{ url('app/company') }}" class="list-group-item list-group-item-action"><i class="fas fa-arrow-alt-circle-right"></i>
+                    Companies
+                  </a>
+              </div>
+              <div class="">
+                <a href="{{ url('/logout') }}"> @ Logout</a>
+              </div>
+          </div>
+          <div class="col-sm-8">
+            @yield('content2')
+          </div>
+
+        </div>
+
+
       </div>
 
 
