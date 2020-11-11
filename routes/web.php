@@ -32,3 +32,4 @@ Route::get('/logout', function(){
 
 Route::get('/app',[Backend\DefaultController::class, 'dashboard']);
 Route::resource('/app/category', Backend\CategoryController::class, ['as'=>'app']);
+Route::resource('/app/company', Backend\CompanyController::class, ['as'=>'app']);
