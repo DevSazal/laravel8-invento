@@ -60,6 +60,29 @@ class UserController extends Controller
       }
     }
 
+    // login function
+    public function loginPage(){
+      return view('auth.login');
+    }
+
+    public function loginUser(Request $request){
+      // code...  User Data Validation
+      $user= User::where('username', $request->login)
+                  ->orWhere('email', $request->login)
+                  ->first();
+      // print_r($user);
+
+          if (!$user || !Hash::check($request->password, $user->password)) {
+              return response([
+                  'message' => ['These credentials do not match our records.']
+              ], 404);
+          }else{
+            $request->session()->put('user', $user);
+            return redirect('/app');
+          }
+
+    }
+
 
 
 }

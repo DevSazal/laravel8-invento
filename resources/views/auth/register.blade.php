@@ -56,5 +56,6 @@
     </div>
   </div>
   <button type="submit" class="btn btn-primary">Sign Up</button>
+  <a href="{{ url('/login') }}"> Go to login page ...</a>
 </form>
 @endsection
