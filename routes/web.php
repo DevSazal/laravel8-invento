@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 // call Controller
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend;
+use App\Http\Controllers\PublicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,9 @@ use App\Http\Controllers\Backend;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 Route::get('/register',[UserController::class, 'registerPage']);
 Route::post('/register',[UserController::class, 'registerUser'])->name('register');
 
@@ -33,3 +34,8 @@ Route::get('/logout', function(){
 Route::get('/app',[Backend\DefaultController::class, 'dashboard']);
 Route::resource('/app/category', Backend\CategoryController::class, ['as'=>'app']);
 Route::resource('/app/company', Backend\CompanyController::class, ['as'=>'app']);
+
+// public area
+Route::get('/',[PublicController::class, 'index']);
+Route::get('/search',[PublicController::class, 'findCompany'])->name('findCompany');
+Route::get('/company/{id}',[PublicController::class, 'companyProfile']);
