@@ -51,8 +51,13 @@
                     Companies
                   </a>
               </div>
+              <br>
+              <br>
               <div class="">
                 <a href="{{ url('/logout') }}"> @ Logout</a>
+              </div>
+              <div class="">
+                <a href="{{ url('/') }}"> ~ Go to Home Page</a>
               </div>
           </div>
           <div class="col-sm-9">
